@@ -93,7 +93,7 @@ RandomItems = async () => {
             if(el[1].tags.length === 0) return;
             if(el[1].into !== undefined) return;
             if(el[1].requiredAlly === "Ornn") return;
-            if(el[1].requiredChampion === "Gangplank") return;
+            if(el[1].requiredChampion) return;
             if(el[0] === "3084" || el[0] == "3137") return;
 
             items.push(el)
