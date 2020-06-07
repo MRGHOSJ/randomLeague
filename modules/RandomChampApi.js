@@ -92,7 +92,8 @@ RandomItems = async () => {
             if(el[1].tags.indexOf("Jungle") > -1) return;
             if(el[1].tags.length === 0) return;
             if(el[1].into !== undefined) return;
-            if(el[1].requiredAlly === "Ornn") return;
+            if(el[1].tags.includes("Active")) return;
+            if(el[1].gold.purchasable === false) return;
             if(el[1].requiredChampion) return;
             if(el[0] === "3084" || el[0] == "3137") return;
 
