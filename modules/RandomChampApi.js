@@ -109,6 +109,8 @@ RandomItems = async () => {
             if(el[1].requiredChampion) return;
             if(el[0] === "3084" || el[0] == "3137") return;
 
+            RandomItems.push(el)
+
             if(el[1].tags.indexOf("Damage") || el[1].tags.indexOf("AttackSpeed")){
                 return AdItems.push(el)
             }
@@ -119,9 +121,6 @@ RandomItems = async () => {
             
             else if(el[1].tags.indexOf("SpellDamage")){
                 return ApItems.push(el)
-            }
-            else{
-                return RandomItems.push(el)
             }
             
             
