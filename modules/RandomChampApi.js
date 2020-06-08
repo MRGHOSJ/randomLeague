@@ -122,8 +122,6 @@ RandomItems = async () => {
             else if(el[1].tags.indexOf("SpellDamage")){
                 return ApItems.push(el)
             }
-            
-            
 
         })
 
@@ -134,23 +132,21 @@ RandomItems = async () => {
         console.log("items:"+Items)
 
         if(ChosenRole === "AdItems"){
-            console.log("AdItems")
             ChosenItems = AdItems
+            console.log(AdItems)
         }
         else if(ChosenRole === "TankItems"){
-            console.log("TankItems")
+            console.log(TankItems)
             ChosenItems = TankItems
         }
         else if(ChosenRole === "ApItems"){
-            console.log("ApItems")
+            console.log(ApItems)
             ChosenItems = ApItems
         }
         else if(ChosenRole === "RandomItems"){
-            console.log("RandomItems")
+            console.log(RandomItems)
             ChosenItems = RandomItems
         }
-
-        console.log(ChosenRole)
 
         // generating 7 random items 
 
