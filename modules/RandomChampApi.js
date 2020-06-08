@@ -60,15 +60,16 @@ RandomItems = async () => {
         let body = r.body
         let Allitems = []
         let ChosenRole = ""
+        let ChosenItems = []
         let AdItems = []
         let TankItems = []
         let ApItems = []
         let RandomItems = []
         let Items = [
-            AdItems,
-            TankItems,
-            ApItems,
-            RandomItems
+            "AdItems",
+            "TankItems",
+            "ApItems",
+            "RandomItems"
         ]
         let JungleItems = []
         let Boots = []
@@ -125,34 +126,38 @@ RandomItems = async () => {
 
         ChosenRole = Items[Math.floor(Math.random() * (Items.length - 0)) + 0]
 
-        if(ChosenRole = AdItems){
+        if(ChosenRole = "AdItems"){
             console.log("AdItems")
+            ChosenItems = AdItems
         }
-        if(ChosenRole = TankItems){
+        if(ChosenRole = "TankItems"){
             console.log("TankItems")
+            ChosenItems = TankItems
         }
-        if(ChosenRole = ApItems){
+        if(ChosenRole = "ApItems"){
             console.log("ApItems")
+            ChosenItems = ApItems
         }
-        if(ChosenRole = RandomItems){
+        if(ChosenRole = "RandomItems"){
             console.log("RandomItems")
+            ChosenItems = RandomItems
         }
 
         // generating 7 random items 
 
-        firstItem = ChosenRole[Math.floor(Math.random() * (ChosenRole.length - 0)) + 0][0]
+        firstItem = ChosenItems[Math.floor(Math.random() * (ChosenItems.length - 0)) + 0][0]
 
-        secondItem = ChosenRole[Math.floor(Math.random() * (ChosenRole.length - 0)) + 0][0]
+        secondItem = ChosenItems[Math.floor(Math.random() * (ChosenItems.length - 0)) + 0][0]
 
-        thirdItem = ChosenRole[Math.floor(Math.random() * (ChosenRole.length - 0)) + 0][0]
+        thirdItem = ChosenItems[Math.floor(Math.random() * (ChosenItems.length - 0)) + 0][0]
 
-        fourthItem = ChosenRole[Math.floor(Math.random() * (ChosenRole.length - 0)) + 0][0]
+        fourthItem = ChosenItems[Math.floor(Math.random() * (ChosenItems.length - 0)) + 0][0]
 
-        fifthItem = ChosenRole[Math.floor(Math.random() * (ChosenRole.length - 0)) + 0][0]
+        fifthItem = ChosenItems[Math.floor(Math.random() * (ChosenItems.length - 0)) + 0][0]
 
-        sixthItem = ChosenRole[Math.floor(Math.random() * (ChosenRole.length - 0)) + 0][0]
+        sixthItem = ChosenItems[Math.floor(Math.random() * (ChosenItems.length - 0)) + 0][0]
 
-        seventhItem = ChosenRole[Math.floor(Math.random() * (ChosenRole.length - 0)) + 0][0]
+        seventhItem = ChosenItems[Math.floor(Math.random() * (ChosenItems.length - 0)) + 0][0]
 
         // generating 2 jungle items
         
