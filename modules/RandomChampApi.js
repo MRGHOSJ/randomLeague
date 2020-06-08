@@ -109,18 +109,20 @@ RandomItems = async () => {
             if(el[1].requiredChampion) return;
             if(el[0] === "3084" || el[0] == "3137") return;
 
+            console.log(el)
+
             RandomItems.push(el)
 
             if(el[1].tags.indexOf("Damage") || el[1].tags.indexOf("AttackSpeed")){
-                return AdItems.push(el)
+                AdItems.push(el)
             }
             
             else if(el[1].tags.indexOf("SpellBlock")|| el[1].tags.indexOf("Health") || el[1].tags.indexOf("Health")){
-                return TankItems.push(el)
+                TankItems.push(el)
             }
             
             else if(el[1].tags.indexOf("SpellDamage")){
-                return ApItems.push(el)
+                ApItems.push(el)
             }
 
         })
