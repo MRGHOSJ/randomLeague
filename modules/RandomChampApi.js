@@ -108,18 +108,18 @@ RandomItems = async () => {
             if(el[0] === "3084" || el[0] == "3137") return;
 
             if(el[1].tags.indexOf("Damage") || el[1].tags.indexOf("AttackSpeed")){
-                Items.AdItems.push(el)
+                AdItems.push(el)
             }
             
             if(el[1].tags.indexOf("SpellBlock")|| el[1].tags.indexOf("Health") || el[1].tags.indexOf("Health")){
-                Items.TankItems.push(el)
+                TankItems.push(el)
             }
             
             if(el[1].tags.indexOf("SpellDamage")){
-                Items.ApItems.push(el)
+                ApItems.push(el)
             }
             
-            Items.RandomItems.push(el)
+            RandomItems.push(el)
 
         })
 
