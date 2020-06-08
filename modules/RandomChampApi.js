@@ -4,6 +4,8 @@ const snekfetch = require('snekfetch')
 
 let version = ""
 
+let ChosenRole = ""
+
 let firstItem = ""
 
 let secondItem = ""
@@ -59,7 +61,6 @@ RandomItems = async () => {
     .then(r =>{
         let body = r.body
         let Allitems = []
-        let ChosenRole = ""
         let ChosenItems = []
         let AdItems = []
         let TankItems = []
@@ -278,6 +279,7 @@ RandomChamp = async (message) => {
         .setTitle("Champion: "+champion)
         .setAuthor(message.author.username, message.author.avatarURL)
         .setThumbnail("http://ddragon.leagueoflegends.com/cdn/10.11.1/img/champion/"+champion+".png")
+        .addField("Role: ", ChosenRole)
         .attachFiles(attachment)
         .setTimestamp()
         .setFooter('Random Champion Generator');
