@@ -134,15 +134,15 @@ RandomItems = async () => {
             console.log("AdItems")
             ChosenItems = AdItems
         }
-        if(ChosenRole = "TankItems"){
+        else if(ChosenRole = "TankItems"){
             console.log("TankItems")
             ChosenItems = TankItems
         }
-        if(ChosenRole = "ApItems"){
+        else if(ChosenRole = "ApItems"){
             console.log("ApItems")
             ChosenItems = ApItems
         }
-        if(ChosenRole = "RandomItems"){
+        else if(ChosenRole = "RandomItems"){
             console.log("RandomItems")
             ChosenItems = RandomItems
         }
