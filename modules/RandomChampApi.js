@@ -64,12 +64,12 @@ RandomItems = async () => {
         let TankItems = []
         let ApItems = []
         let RandomItems = []
-        let Items = [
-            "AdItems" = AdItems,
-            "TankItems" = TankItems,
-            "ApItems" = ApItems,
-            "RandomItems" = RandomItems
-        ]
+        let Items = {
+            "AdItems" : AdItems,
+            "TankItems" : TankItems,
+            "ApItems" : ApItems,
+            "RandomItems" : RandomItems
+        }
         let JungleItems = []
         let Boots = []
 
