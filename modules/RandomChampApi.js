@@ -123,9 +123,9 @@ RandomItems = async () => {
 
         })
 
-        ChosenRole = Items[Math.floor(Math.random() * (Items.length - 0)) + 0][1]
+        ChosenRole = Items[Math.floor(Math.random() * (Items.length - 0)) + 0]
 
-        console.log(ChosenRole[0])
+        console.log(ChosenRole)
 
         // generating 7 random items 
 
