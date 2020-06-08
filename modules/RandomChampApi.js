@@ -60,11 +60,15 @@ RandomItems = async () => {
         let body = r.body
         let Allitems = []
         let ChosenRole = ""
+        let AdItems = []
+        let TankItems = []
+        let ApItems = []
+        let RandomItems = []
         let Items = [
-            AdItems = []
-            ,TankItems = []
-            ,ApItems = []
-            ,RandomItems = []
+            AdItems,
+            TankItems,
+            ApItems,
+            RandomItems
         ]
         let JungleItems = []
         let Boots = []
