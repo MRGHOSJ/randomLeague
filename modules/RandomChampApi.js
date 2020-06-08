@@ -126,6 +126,10 @@ RandomItems = async () => {
 
         ChosenRole = Items[Math.floor(Math.random() * (Items.length - 0)) + 0]
 
+        console.log("CHosen:"+ChosenRole)
+
+        console.log("items:"+Items)
+
         if(ChosenRole = "AdItems"){
             console.log("AdItems")
             ChosenItems = AdItems
