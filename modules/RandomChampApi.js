@@ -75,6 +75,30 @@ RandomItems = async () => {
         let JungleItems = []
         let Boots = []
 
+        // resetting values 
+
+        firstItem = ""
+
+        secondItem = ""
+
+        thirdItem = ""
+
+        fourthItem = ""
+
+        fifthItem = ""
+
+        sixthItem = ""
+
+        seventhItem = ""
+
+        firstJungleItem = ""
+
+        SecondJungleItem = ""
+
+        firstBoots = ""
+
+        SecondBoots = ""
+
         for (var i in body.data) {
             Allitems.push([i, body.data [i]]);
         }
@@ -109,8 +133,6 @@ RandomItems = async () => {
             if(el[1].requiredChampion) return;
             if(el[0] === "3084" || el[0] == "3137") return;
 
-            console.log(el)
-
             RandomItems.push(el)
 
             if(el[1].tags.indexOf("Damage") || el[1].tags.indexOf("AttackSpeed")){
@@ -129,24 +151,16 @@ RandomItems = async () => {
 
         ChosenRole = Items[Math.floor(Math.random() * (Items.length - 0)) + 0]
 
-        console.log("CHosen:"+ChosenRole)
-
-        console.log("items:"+Items)
-
         if(ChosenRole === "AdItems"){
             ChosenItems = AdItems
-            console.log(AdItems)
         }
         else if(ChosenRole === "TankItems"){
-            console.log(TankItems)
             ChosenItems = TankItems
         }
         else if(ChosenRole === "ApItems"){
-            console.log(ApItems)
             ChosenItems = ApItems
         }
         else if(ChosenRole === "RandomItems"){
-            console.log(RandomItems)
             ChosenItems = RandomItems
         }
 
