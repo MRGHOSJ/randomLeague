@@ -65,10 +65,10 @@ RandomItems = async () => {
         let ApItems = []
         let RandomItems = []
         let Items = [
-            AdItems,
-            TankItems,
-            ApItems,
-            RandomItems
+            "AdItems" = AdItems,
+            "TankItems" = TankItems,
+            "ApItems" = ApItems,
+            "RandomItems" = RandomItems
         ]
         let JungleItems = []
         let Boots = []
@@ -123,9 +123,9 @@ RandomItems = async () => {
 
         })
 
-        ChosenRole = Items[Math.floor(Math.random() * (Items.length - 0)) + 0]
+        ChosenRole = Items[Math.floor(Math.random() * (Items.length - 0)) + 0][1]
 
-        console.log(ChosenRole)
+        console.log(ChosenRole[0])
 
         // generating 7 random items 
 
