@@ -119,7 +119,7 @@ RandomItems = async () => {
                 ApItems.push(el)
             }
             
-            Items.RandomItems.push(el)
+            RandomItems.push(el)
 
         })
 
