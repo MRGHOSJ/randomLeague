@@ -1,0 +1,29 @@
+{
+    "AD":[
+        "FAD",
+        "ADT",
+        "FLS",
+        "FL",
+        "FC",
+        "ADLS",
+        "ADL",
+        "ADC",
+        "LSL",
+        "LSC",
+        "LC",
+        "FAS",
+        "LSAS",
+        "LAS",
+        "AAS",
+        "CAS"
+    ],
+    "AP":[
+        "FAP",
+        "APT",
+        "APAS",
+        "APM"
+    ],
+    "TANK":[
+        "FT"
+    ]
+}
