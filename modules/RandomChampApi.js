@@ -10,24 +10,25 @@ let version = ""
 let championSelected = []
 let champion = ""
 
-const canvas =  Canvas.createCanvas(450, 300)
+const canvas =  Canvas.createCanvas(800, 600)
 const ctx = canvas.getContext("2d", { alpha: false })
-ctx.font = "20px Arial"
+ctx.font = "35px Arial"
 ctx.fillStyle = "white"
 ctx.textAlign = "center"
 
 module.exports.run = (message) => {
+    message.reply("Wait for few seconds to get a random loud out")
     currentVersion()
     LoudOuts.run(version).then(async (r)=>{
         switch(r.LoudOutSimplified){
             case "AP":
-                Champions.fetch(version,r.LoudOutSimplified).then((r)=>championSelected = r[getRandomInt(r.length)])
+                await Champions.fetch(version,r.LoudOutSimplified).then((r)=>championSelected = r[getRandomInt(r.length)])
                 break;
             case "AD":
-                Champions.fetch(version,r.LoudOutSimplified).then((r)=>championSelected = r[getRandomInt(r.length)])
+                await Champions.fetch(version,r.LoudOutSimplified).then((r)=>championSelected = r[getRandomInt(r.length)])
                 break;
             case "Tank":
-                Champions.fetch(version,r.LoudOutSimplified).then((r)=>championSelected = r[getRandomInt(r.length)])
+                await Champions.fetch(version,r.LoudOutSimplified).then((r)=>championSelected = r[getRandomInt(r.length)])
                 break;
         }
 
@@ -35,11 +36,10 @@ module.exports.run = (message) => {
 
         console.log(champion)
 
-        const background = await Canvas.loadImage("http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"+champion+"_0.jpg")
+        const background = await Canvas.loadImage("http://ddragon.leagueoflegends.com/cdn/img/champion/loading/"+champion+"_0.jpg")
 
 
         // generating random 7 items pictures
-        console.log(r.FirstLegendaryItem)
         console.log(r.FirstLegendaryItem[0])
 
         let firstItemUrl = await Canvas.loadImage("http://ddragon.leagueoflegends.com/cdn/"+version+"/img/item/"+r.FirstLegendaryItem[0]+".png")
@@ -50,43 +50,59 @@ module.exports.run = (message) => {
 
         let fourthItemUrl = await Canvas.loadImage("http://ddragon.leagueoflegends.com/cdn/"+version+"/img/item/"+r.ForthLegendaryItem[0]+".png")
 
-        let fifthItemUrl = await Canvas.loadImage("http://ddragon.leagueoflegends.com/cdn/"+version+"/img/item/"+r.MythicItem[0]+".png")
+        let MythicItemUrl = await Canvas.loadImage("http://ddragon.leagueoflegends.com/cdn/"+version+"/img/item/"+r.MythicItem[0]+".png")
 
 
-        ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
+        //Canvas Background
 
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        // top row items
+        //Champion Display
 
-        ctx.fillText("Items:", 50, 50)
+        ctx.fillStyle = "white"
 
-        ctx.drawImage(firstItemUrl,20,60, 50,50)
+        ctx.drawImage(background,0, 0, 350, canvas.height)
 
-        ctx.drawImage(secondItemUrl,80,60, 50,50)
+        ctx.fillText(champion, 170, 40)
+        ctx.font = "20px Arial"
+        ctx.fillText(r.LoudOutResult, 170, 70)
 
-        ctx.drawImage(thirdItemUrl,140,60, 50,50)
+        //Mythic Item Display
 
-        ctx.drawImage(fourthItemUrl,200,60, 50,50)
+        ctx.font = "35px Arial"
+        ctx.fillStyle = "#bf00bf"
 
-        ctx.drawImage(fifthItemUrl,260,60, 50,50)
+        ctx.fillText("Mythic Item:", 450, 50)
 
-        const attachment = new Discord.MessageAttachment(
+        ctx.drawImage(MythicItemUrl, 360, 80, 70,70)
+
+        ctx.fillText(r.MythicItem[1].name, 610, 130)
+
+        //Legendary Items Display
+
+        ctx.fillStyle = "#F03F22"
+
+        ctx.fillText("Legendary Items:", 485, 200)
+
+        ctx.drawImage(firstItemUrl, 360,220, 70,70)
+        ctx.fillText(r.FirstLegendaryItem[1].name, 610, 265)
+
+        ctx.drawImage(secondItemUrl, 360,300, 70,70)
+        ctx.fillText(r.SecondLegendaryItem[1].name, 610, 345)
+
+        ctx.drawImage(thirdItemUrl, 360,380, 70,70)
+        ctx.fillText(r.ThirdLegendaryItem[1].name, 610, 430)
+
+        ctx.drawImage(fourthItemUrl, 360,460, 70,70)
+        ctx.fillText(r.ForthLegendaryItem[1].name, 610, 510)
+
+        let attachment = new Discord.MessageAttachment(
             canvas.toBuffer(),
             "randomchampion.png"
         )
-
-        const RandomChampEmbed = new Discord.MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle("Champion: "+champion)
-        .setAuthor(message.author.username, message.author.avatarURL)
-        .setThumbnail("http://ddragon.leagueoflegends.com/cdn/10.11.1/img/champion/"+champion+".png")
-        .addField("Role: ", r.LoudOutSimplified)
-        .attachFiles(attachment)
-        .setTimestamp()
-        .setFooter('Random Champion Generator');
-
         
-        message.channel.send(RandomChampEmbed);
+        message.channel.send(attachment);
     }).catch((err)=>{
         console.log(err)
     })
