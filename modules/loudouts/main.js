@@ -60,7 +60,7 @@ getRandomInt = (max) => {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
-loudout = (version) => {
+loudout = async (version) => {
     // 4 Legendary Items
     // 1 Mythic Item
     // 2 Boots
@@ -72,11 +72,11 @@ loudout = (version) => {
                 case "FAD":
                     //Full AD
                     loudoutResult = "Full AD"
-                    MythicItems.fetch(version).then((r)=>{
+                    await MythicItems.fetch(version).then((r)=>{
                         MythicItem = r.AD[getRandomInt(r.AD.length)]
                     }).catch((err)=>{console.error(err.message)})
 
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.AD[getRandomInt(r.AD.length)]
                         SecondLegendaryItem = r.AD[getRandomInt(r.AD.length)]
                         ThirdLegendaryItem = r.AD[getRandomInt(r.AD.length)]
@@ -88,18 +88,18 @@ loudout = (version) => {
                     loudoutResult = "AD + Tank"
                     switch(getRandomInt(2)){
                         case 0:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.Tank[getRandomInt(r.Tank.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                         case 1:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.AD[getRandomInt(r.AD.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                     }
                     
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.AD[getRandomInt(r.AD.length)]
                         SecondLegendaryItem = r.AD[getRandomInt(r.AD.length)]
                         ThirdLegendaryItem = r.Tank[getRandomInt(r.Tank.length)]
@@ -110,11 +110,11 @@ loudout = (version) => {
                 case "FLS":
                     //Full Life Steal
                     loudoutResult = "Full Life steal"
-                    MythicItems.fetch(version).then((r)=>{
+                    await MythicItems.fetch(version).then((r)=>{
                         MythicItem = r.LifeSteal[getRandomInt(r.LifeSteal.length)]
                     }).catch((err)=>{console.error(err.message)})
 
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.LifeSteal[getRandomInt(r.LifeSteal.length)]
                         SecondLegendaryItem = r.LifeSteal[getRandomInt(r.LifeSteal.length)]
                         ThirdLegendaryItem = r.LifeSteal[getRandomInt(r.LifeSteal.length)]
@@ -124,11 +124,11 @@ loudout = (version) => {
                 case "FL":
                     //Full Lethality
                     loudoutResult = "Full lethality"
-                    MythicItems.fetch(version).then((r)=>{
+                    await MythicItems.fetch(version).then((r)=>{
                         MythicItem = r.AD[getRandomInt(r.AD.length)]
                     }).catch((err)=>{console.error(err.message)})
 
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.Lethality[getRandomInt(r.Lethality.length)]
                         SecondLegendaryItem = r.Lethality[getRandomInt(r.Lethality.length)]
                         ThirdLegendaryItem = r.Lethality[getRandomInt(r.Lethality.length)]
@@ -138,11 +138,11 @@ loudout = (version) => {
                 case "FC":
                     //Full Crit
                     loudoutResult = "Full crit"
-                    MythicItems.fetch(version).then((r)=>{
+                    await MythicItems.fetch(version).then((r)=>{
                         MythicItem = r.CriticalStrike[getRandomInt(r.CriticalStrike.length)]
                     }).catch((err)=>{console.error(err.message)})
 
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.CriticalStrike[getRandomInt(r.CriticalStrike.length)]
                         SecondLegendaryItem = r.CriticalStrike[getRandomInt(r.CriticalStrike.length)]
                         ThirdLegendaryItem = r.CriticalStrike[getRandomInt(r.CriticalStrike.length)]
@@ -154,18 +154,18 @@ loudout = (version) => {
                     loudoutResult = "AD + Life Steal"
                     switch(getRandomInt(2)){
                         case 0:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.LifeSteal[getRandomInt(r.LifeSteal.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                         case 1:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.AD[getRandomInt(r.AD.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                     }
                     
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.AD[getRandomInt(r.AD.length)]
                         SecondLegendaryItem = r.AD[getRandomInt(r.AD.length)]
                         ThirdLegendaryItem = r.LifeSteal[getRandomInt(r.LifeSteal.length)]
@@ -175,11 +175,11 @@ loudout = (version) => {
                 case "ADL":
                     //AD + Lethality
                     loudoutResult = "AD + Lethality"
-                    MythicItems.fetch(version).then((r)=>{
+                    await MythicItems.fetch(version).then((r)=>{
                         MythicItem = r.AD[getRandomInt(r.AD.length)]
                     }).catch((err)=>{console.error(err.message)})
                     
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.AD[getRandomInt(r.AD.length)]
                         SecondLegendaryItem = r.AD[getRandomInt(r.AD.length)]
                         ThirdLegendaryItem = r.Lethality[getRandomInt(r.Tank.length)]
@@ -191,18 +191,18 @@ loudout = (version) => {
                     loudoutResult = "AD + Crit"
                     switch(getRandomInt(2)){
                         case 0:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.CriticalStrike[getRandomInt(r.CriticalStrike.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                         case 1:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.AD[getRandomInt(r.AD.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                     }
                     
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.AD[getRandomInt(r.AD.length)]
                         SecondLegendaryItem = r.AD[getRandomInt(r.AD.length)]
                         ThirdLegendaryItem = r.CriticalStrike[getRandomInt(r.CriticalStrike.length)]
@@ -214,18 +214,18 @@ loudout = (version) => {
                     loudoutResult = "Life steal + Lethality"
                     switch(getRandomInt(2)){
                         case 0:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.LifeSteal[getRandomInt(r.LifeSteal.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                         case 1:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.AD[getRandomInt(r.AD.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                     }
                     
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.LifeSteal[getRandomInt(r.LifeSteal.length)]
                         SecondLegendaryItem = r.LifeSteal[getRandomInt(r.LifeSteal.length)]
                         ThirdLegendaryItem = r.Lethality[getRandomInt(r.Lethality.length)]
@@ -237,18 +237,18 @@ loudout = (version) => {
                     loudoutResult = "Life steal + crit"
                     switch(getRandomInt(2)){
                         case 0:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.CriticalStrike[getRandomInt(r.CriticalStrike.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                         case 1:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.LifeSteal[getRandomInt(r.LifeSteal.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                     }
                     
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.LifeSteal[getRandomInt(r.LifeSteal.length)]
                         SecondLegendaryItem = r.LifeSteal[getRandomInt(r.LifeSteal.length)]
                         ThirdLegendaryItem = r.CriticalStrike[getRandomInt(r.CriticalStrike.length)]
@@ -260,18 +260,18 @@ loudout = (version) => {
                     loudoutResult = "Lethality + crit"
                     switch(getRandomInt(2)){
                         case 0:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.CriticalStrike[getRandomInt(r.CriticalStrike.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                         case 1:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.AD[getRandomInt(r.AD.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                     }
                     
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.CriticalStrike[getRandomInt(r.CriticalStrike.length)]
                         SecondLegendaryItem = r.CriticalStrike[getRandomInt(r.CriticalStrike.length)]
                         ThirdLegendaryItem = r.Lethality[getRandomInt(r.Lethality.length)]
@@ -281,11 +281,11 @@ loudout = (version) => {
                 case "FAS":
                     //Full Attack Speed
                     loudoutResult = "Full Attack Speed"
-                    MythicItems.fetch(version).then((r)=>{
+                    await MythicItems.fetch(version).then((r)=>{
                         MythicItem = r.AttackSpeed[getRandomInt(r.Tank.length)]
                     }).catch((err)=>{console.error(err.message)})
                     
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.AttackSpeed[getRandomInt(r.AttackSpeed.length)]
                         SecondLegendaryItem = r.AttackSpeed[getRandomInt(r.AttackSpeed.length)]
                         ThirdLegendaryItem = r.AttackSpeed[getRandomInt(r.AttackSpeed.length)]
@@ -297,18 +297,18 @@ loudout = (version) => {
                     loudoutResult = "Life Steal + Atack Speed"
                     switch(getRandomInt(2)){
                         case 0:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.LifeSteal[getRandomInt(r.LifeSteal.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                         case 1:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.AttackSpeed[getRandomInt(r.AttackSpeed.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                     }
                     
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.AttackSpeed[getRandomInt(r.AttackSpeed.length)]
                         SecondLegendaryItem = r.AttackSpeed[getRandomInt(r.AttackSpeed.length)]
                         ThirdLegendaryItem = r.LifeSteal[getRandomInt(r.LifeSteal.length)]
@@ -320,18 +320,18 @@ loudout = (version) => {
                     loudoutResult = "Lethality + Atack Speed"
                     switch(getRandomInt(2)){
                         case 0:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.AttackSpeed[getRandomInt(r.AttackSpeed.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                         case 1:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.AD[getRandomInt(r.AD.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                     }
                     
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.AttackSpeed[getRandomInt(r.AttackSpeed.length)]
                         SecondLegendaryItem = r.AttackSpeed[getRandomInt(r.AttackSpeed.length)]
                         ThirdLegendaryItem = r.Lethality[getRandomInt(r.Lethality.length)]
@@ -343,18 +343,18 @@ loudout = (version) => {
                     loudoutResult = "AD + Attack Speed"
                     switch(getRandomInt(2)){
                         case 0:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.AttackSpeed[getRandomInt(r.AttackSpeed.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                         case 1:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.AD[getRandomInt(r.AD.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                     }
                     
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.AD[getRandomInt(r.AD.length)]
                         SecondLegendaryItem = r.AD[getRandomInt(r.AD.length)]
                         ThirdLegendaryItem = r.AttackSpeed[getRandomInt(r.AttackSpeed.length)]
@@ -366,18 +366,18 @@ loudout = (version) => {
                     loudoutResult = "Crit + Attack Speed"
                     switch(getRandomInt(2)){
                         case 0:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.CriticalStrike[getRandomInt(r.CriticalStrike.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                         case 1:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.AttackSpeed[getRandomInt(r.AttackSpeed.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                     }
                     
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.AttackSpeed[getRandomInt(r.AttackSpeed.length)]
                         SecondLegendaryItem = r.AttackSpeed[getRandomInt(r.AttackSpeed.length)]
                         ThirdLegendaryItem = r.CriticalStrike[getRandomInt(r.CriticalStrike.length)]
@@ -392,11 +392,11 @@ loudout = (version) => {
                 case "FAP":
                     //Full AP
                     loudoutResult = "Full AP"
-                    MythicItems.fetch(version).then((r)=>{
-                    MythicItem = r.AP[getRandomInt(r.AP.length)]
-                    }).catch((err)=>{console.error(err.message)})
+                    await MythicItems.fetch(version).then((r)=>{
+                            MythicItem = r.AP[getRandomInt(r.AP.length)]
+                            }).catch((err)=>{console.error(err.message)})
                     
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.AP[getRandomInt(r.AP.length)]
                         SecondLegendaryItem = r.AP[getRandomInt(r.AP.length)]
                         ThirdLegendaryItem = r.AP[getRandomInt(r.AP.length)]
@@ -408,18 +408,18 @@ loudout = (version) => {
                     loudoutResult = "AP + Tank"
                     switch(getRandomInt(2)){
                         case 0:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.Tank[getRandomInt(r.Tank.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                         case 1:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.AP[getRandomInt(r.AP.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                     }
                     
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.AP[getRandomInt(r.AP.length)]
                         SecondLegendaryItem = r.AP[getRandomInt(r.AP.length)]
                         ThirdLegendaryItem = r.Tank[getRandomInt(r.Tank.length)]
@@ -431,18 +431,18 @@ loudout = (version) => {
                     loudoutResult = "AP + attack speed"
                     switch(getRandomInt(2)){
                         case 0:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.AP[getRandomInt(r.AP.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                         case 1:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.AttackSpeed[getRandomInt(r.AttackSpeed.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                     }
                     
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.AP[getRandomInt(r.AP.length)]
                         SecondLegendaryItem = r.AP[getRandomInt(r.AP.length)]
                         ThirdLegendaryItem = r.AttackSpeed[getRandomInt(r.AttackSpeed.length)]
@@ -454,18 +454,18 @@ loudout = (version) => {
                     loudoutResult = "AP + Mana"
                     switch(getRandomInt(2)){
                         case 0:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.AP[getRandomInt(r.AP.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                         case 1:
-                            MythicItems.fetch(version).then((r)=>{
+                            await MythicItems.fetch(version).then((r)=>{
                                 MythicItem = r.Mana[getRandomInt(r.Mana.length)]
                             }).catch((err)=>{console.error(err.message)})
                             break;
                     }
                     
-                    LegendaryItems.fetch(version).then((r)=>{
+                    await LegendaryItems.fetch(version).then((r)=>{
                         FirstLegendaryItem = r.AP[getRandomInt(r.AP.length)]
                         SecondLegendaryItem = r.AP[getRandomInt(r.AP.length)]
                         ThirdLegendaryItem = r.Mana[getRandomInt(r.Mana.length)]
@@ -478,11 +478,11 @@ loudout = (version) => {
             SimplifiedLoudoutResult = "Tank"
             //Full Tank
             loudoutResult = "FULL TANK"
-            MythicItems.fetch(version).then((r)=>{
+            await MythicItems.fetch(version).then((r)=>{
                 MythicItem = r.Tank[getRandomInt(r.Tank.length)]
             }).catch((err)=>{console.error(err.message)})
             
-            LegendaryItems.fetch(version).then((r)=>{
+            await LegendaryItems.fetch(version).then((r)=>{
                 FirstLegendaryItem = r.Tank[getRandomInt(r.Tank.length)]
                 SecondLegendaryItem = r.Tank[getRandomInt(r.Tank.length)]
                 ThirdLegendaryItem = r.Tank[getRandomInt(r.Tank.length)]

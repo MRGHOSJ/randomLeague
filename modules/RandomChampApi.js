@@ -20,6 +20,7 @@ module.exports.run = (message) => {
     message.reply("Wait for few seconds to get a random loud out")
     currentVersion()
     LoudOuts.run(version).then(async (r)=>{
+        console.log(r)
         switch(r.LoudOutSimplified){
             case "AP":
                 await Champions.fetch(version,r.LoudOutSimplified).then((r)=>championSelected = r[getRandomInt(r.length)])
