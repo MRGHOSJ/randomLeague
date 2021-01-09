@@ -27,8 +27,6 @@ let BlackListedItems = [
 module.exports.fetch = async (version) => {
 
     await fetchLegendaryItems(version)
-    
-    console.log("SECOND LOG",AdLegendaryItems.length)
 
     return {
         'AD':AdLegendaryItems,

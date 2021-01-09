@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+require("dotenv").config()
+
 const RandomChamp = require('./modules/RandomChampApi')
 
 client.on('ready', () => {
@@ -31,4 +33,4 @@ client.on('message', message => {
 
 });
 
-client.login('NzE4NTQ2MzMxOTI0Mjk5ODI4.Xtqcog.f1JTB0yj6SbLuQvIidw1_Oac1aE');
+client.login(process.env.TOKEN);

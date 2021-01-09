@@ -20,7 +20,6 @@ module.exports.run = (message) => {
     message.reply("Wait for few seconds to get a random loud out")
     currentVersion()
     LoudOuts.run(version).then(async (r)=>{
-        console.log(r)
         switch(r.LoudOutSimplified){
             case "AP":
                 await Champions.fetch(version,r.LoudOutSimplified).then((r)=>championSelected = r[getRandomInt(r.length)])
@@ -35,13 +34,10 @@ module.exports.run = (message) => {
 
         champion = championSelected[0]
 
-        console.log(champion)
-
         const background = await Canvas.loadImage("http://ddragon.leagueoflegends.com/cdn/img/champion/loading/"+champion+"_0.jpg")
 
 
         // generating random 7 items pictures
-        console.log(r.FirstLegendaryItem[0])
 
         let firstItemUrl = await Canvas.loadImage("http://ddragon.leagueoflegends.com/cdn/"+version+"/img/item/"+r.FirstLegendaryItem[0]+".png")
 
@@ -105,7 +101,8 @@ module.exports.run = (message) => {
         
         message.channel.send(attachment);
     }).catch((err)=>{
-        console.log(err)
+        console.error(err)
+        message.channel.send(err.message+". Try to run the command again!")
     })
     
 }

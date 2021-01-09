@@ -14,8 +14,6 @@ module.exports.fetch = async (version) => {
 
     await fetchMythicItems(version)
 
-    console.log("FIRST LOG:",AdMythicItems.length)
-
     return {
         'AD':AdMythicItems,
         'CriticalStrike':CriticalStrikeMythicItems,
