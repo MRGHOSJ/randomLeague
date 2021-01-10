@@ -61,9 +61,9 @@ getRandomInt = (max) => {
 }
 
 loudout = async (version) => {
+    
     // 4 Legendary Items
     // 1 Mythic Item
-    // 2 Boots
 
     switch(getRandomInt(3)){
         case 0:
@@ -257,7 +257,7 @@ loudout = async (version) => {
                 break;
                 case "LC":
                     //Lethality + Crit
-                    loudoutResult = "Lethality + crit"
+                    loudoutResult = "crit + Lethality"
                     switch(getRandomInt(2)){
                         case 0:
                             await MythicItems.fetch(version).then((r)=>{
@@ -294,7 +294,7 @@ loudout = async (version) => {
                 break;
                 case "LSAS":
                     //Life Steal + Attack Speed
-                    loudoutResult = "Life Steal + Atack Speed"
+                    loudoutResult = "Atack Speed + Life Steal"
                     switch(getRandomInt(2)){
                         case 0:
                             await MythicItems.fetch(version).then((r)=>{
@@ -317,7 +317,7 @@ loudout = async (version) => {
                 break;
                 case "LAS":
                     //Lethality + Attack Speed
-                    loudoutResult = "Lethality + Atack Speed"
+                    loudoutResult = "Atack Speed + Lethality"
                     switch(getRandomInt(2)){
                         case 0:
                             await MythicItems.fetch(version).then((r)=>{
@@ -363,7 +363,7 @@ loudout = async (version) => {
                 break;
                 case "CAS":
                     //Crit + Attack Speed
-                    loudoutResult = "Crit + Attack Speed"
+                    loudoutResult = "Attack Speed + Crit"
                     switch(getRandomInt(2)){
                         case 0:
                             await MythicItems.fetch(version).then((r)=>{

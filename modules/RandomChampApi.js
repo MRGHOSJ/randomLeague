@@ -10,6 +10,16 @@ let version = ""
 let championSelected = []
 let champion = ""
 
+let firstItemUrl
+let secondItemUrl
+let thirdItemUrl
+let fourthItemUrl
+
+let FirstItemCanvas
+let SecondItemCanvas
+let ThirdItemCanvas
+let FourthItemCanvas
+
 const canvas =  Canvas.createCanvas(800, 600)
 const ctx = canvas.getContext("2d", { alpha: false })
 ctx.font = "35px Arial"
@@ -39,15 +49,36 @@ module.exports.run = (message) => {
 
         // generating random 7 items pictures
 
-        let firstItemUrl = await Canvas.loadImage("http://ddragon.leagueoflegends.com/cdn/"+version+"/img/item/"+r.FirstLegendaryItem[0]+".png")
+        firstItemUrl = "http://ddragon.leagueoflegends.com/cdn/"+version+"/img/item/"+r.FirstLegendaryItem[0]+".png"
 
-        let secondItemUrl = await Canvas.loadImage("http://ddragon.leagueoflegends.com/cdn/"+version+"/img/item/"+r.SecondLegendaryItem[0]+".png")
+        let DupItemUrl = "https://img.pngio.com/random-png-pluspngcom-512-random-png-26852-png-images-pngio-random-png-512_512.png"
 
-        let thirdItemUrl = await Canvas.loadImage("http://ddragon.leagueoflegends.com/cdn/"+version+"/img/item/"+r.ThirdLegendaryItem[0]+".png")
+        
 
-        let fourthItemUrl = await Canvas.loadImage("http://ddragon.leagueoflegends.com/cdn/"+version+"/img/item/"+r.ForthLegendaryItem[0]+".png")
+        if(r.SecondLegendaryItem[0] === r.FirstLegendaryItem[0]){
+            secondItemUrl = DupItemUrl
+        }else{
+            secondItemUrl = "http://ddragon.leagueoflegends.com/cdn/"+version+"/img/item/"+r.SecondLegendaryItem[0]+".png"
+        }
 
-        let MythicItemUrl = await Canvas.loadImage("http://ddragon.leagueoflegends.com/cdn/"+version+"/img/item/"+r.MythicItem[0]+".png")
+        if(r.ThirdLegendaryItem[0] === r.SecondLegendaryItem[0] || r.ThirdLegendaryItem[0] === r.FirstLegendaryItem[0]){
+            thirdItemUrl = DupItemUrl
+        }else{
+            thirdItemUrl = "http://ddragon.leagueoflegends.com/cdn/"+version+"/img/item/"+r.ThirdLegendaryItem[0]+".png"
+        }
+
+        if(r.ForthLegendaryItem[0] === r.ThirdLegendaryItem[0] || r.ForthLegendaryItem[0] === r.SecondLegendaryItem[0] || r.ForthLegendaryItem[0] == r.FirstLegendaryItem[0]){
+            fourthItemUrl = DupItemUrl
+        }else{
+            fourthItemUrl = "http://ddragon.leagueoflegends.com/cdn/"+version+"/img/item/"+r.ForthLegendaryItem[0]+".png"
+        }
+
+        let MythicItemCanvas = await Canvas.loadImage("http://ddragon.leagueoflegends.com/cdn/"+version+"/img/item/"+r.MythicItem[0]+".png")
+
+        FirstItemCanvas = await Canvas.loadImage(firstItemUrl)
+        SecondItemCanvas = await Canvas.loadImage(secondItemUrl)
+        ThirdItemCanvas = await Canvas.loadImage(thirdItemUrl)
+        FourthItemCanvas = await Canvas.loadImage(fourthItemUrl)
 
 
         //Canvas Background
@@ -57,13 +88,13 @@ module.exports.run = (message) => {
 
         //Champion Display
 
+        ctx.drawImage(background,0, 80, 350, canvas.height)
+
         ctx.fillStyle = "white"
-
-        ctx.drawImage(background,0, 0, 350, canvas.height)
-
         ctx.fillText(champion, 170, 40)
         ctx.font = "20px Arial"
         ctx.fillText(r.LoudOutResult, 170, 70)
+
 
         //Mythic Item Display
 
@@ -72,7 +103,7 @@ module.exports.run = (message) => {
 
         ctx.fillText("Mythic Item:", 450, 50)
 
-        ctx.drawImage(MythicItemUrl, 360, 80, 70,70)
+        ctx.drawImage(MythicItemCanvas, 360, 80, 70,70)
 
         ctx.fillText(r.MythicItem[1].name, 610, 130)
 
@@ -80,19 +111,34 @@ module.exports.run = (message) => {
 
         ctx.fillStyle = "#F03F22"
 
-        ctx.fillText("Legendary Items:", 485, 200)
+        ctx.fillText("Legendary Items:", 490, 200)
 
-        ctx.drawImage(firstItemUrl, 360,220, 70,70)
+        ctx.drawImage(FirstItemCanvas, 360,220, 70,70)
         ctx.fillText(r.FirstLegendaryItem[1].name, 610, 265)
 
-        ctx.drawImage(secondItemUrl, 360,300, 70,70)
-        ctx.fillText(r.SecondLegendaryItem[1].name, 610, 345)
+        ctx.drawImage(SecondItemCanvas, 360,300, 70,70)
 
-        ctx.drawImage(thirdItemUrl, 360,380, 70,70)
-        ctx.fillText(r.ThirdLegendaryItem[1].name, 610, 430)
+        if(secondItemUrl === DupItemUrl){
+            ctx.fillText("Your choice", 610, 345)
+        }else{
+            ctx.fillText(r.SecondLegendaryItem[1].name, 610, 345)
+        }
 
-        ctx.drawImage(fourthItemUrl, 360,460, 70,70)
-        ctx.fillText(r.ForthLegendaryItem[1].name, 610, 510)
+        ctx.drawImage(ThirdItemCanvas, 360,380, 70,70)
+
+        if(thirdItemUrl === DupItemUrl){
+            ctx.fillText("Your choice", 610, 430)
+        }else{
+            ctx.fillText(r.ThirdLegendaryItem[1].name, 610, 430)
+        }
+
+        ctx.drawImage(FourthItemCanvas, 360,460, 70,70)
+
+        if(fourthItemUrl === DupItemUrl){
+            ctx.fillText("Your choice", 610, 510)
+        }else{
+            ctx.fillText(r.ForthLegendaryItem[1].name, 610, 510)
+        }
 
         let attachment = new Discord.MessageAttachment(
             canvas.toBuffer(),

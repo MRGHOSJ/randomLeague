@@ -66,7 +66,7 @@ fetchMythicItems = async (version) => {
                 ManaMythicItems.push(item)
             }
 
-            if(item[1].tags.includes("AbilityHaste") || item[1].tags.includes("SpellDamage")){
+            if(item[1].tags.includes("SpellDamage")){
                 ApMythicItems.push(item)
             }
 

@@ -83,7 +83,7 @@ fetchLegendaryItems = async (version) => {
             if(item[1].tags.includes("Mana")){
                 ManaLegendaryItems.push(item)
             }
-            if(item[1].tags.includes("AbilityHaste") || item[1].tags.includes("SpellDamage")){
+            if(item[1].tags.includes("SpellDamage")){
                 ApLegendaryItems.push(item)
             }
 
